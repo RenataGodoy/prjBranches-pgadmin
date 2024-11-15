@@ -29,5 +29,8 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 # Expor a porta 9000 para rodar o PHP-FPM
 EXPOSE 9000
 
+php artisan serve --host=0.0.0.0 --port=9000
+
+
 # Rodar o PHP-FPM no contêiner
 CMD ["php-fpm"]
