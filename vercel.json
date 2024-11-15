@@ -2,20 +2,24 @@
     "version": 2,
     "builds": [
       {
-        "src": "Dockerfile",
-        "use": "@vercel/docker"
+        "src": "vite.config.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/**/*",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/public/index.php"
+        "dest": "/public/$1"
       }
     ],
     "env": {
-      "APP_ENV": "production",
-      "APP_KEY": "base64:WquVXzH1F7atMN3NkqRBh3Kr8...",
-      "DB_CONNECTION": "pgsql",
+      "APP_ENV": "local",
+      "APP_KEY": "base64:WquXXzHlF7atMN3NkqRBh3Kr8LoJ4JTZZ2S1L556Q0E=", 
+      "DB_CONNECTION": "pgsql", 
       "DB_HOST": "127.0.0.1",
       "DB_PORT": "5432",
       "DB_DATABASE": "Branches_db",
