@@ -16,8 +16,3 @@ require __DIR__.'/../vendor/autoload.php';
 (require_once __DIR__.'/../bootstrap/app.php')
     ->handleRequest(Request::capture());
 
-
-//ports
-    $port = env('PORT', 9000);
-    $app->run($port, '0.0.0.0');
-    
