@@ -31,17 +31,17 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // //CRIANDO O ADMIN
 Route::get('/create-admin', function () {
-    if (!User::where('email', 'admin@example.com')->exists())
-
- {
-        User::create([
-            'name' => 'Renatag',
-            'email' => 'devrenatagodoy@gmail.com',
-            'password' => Hash::make('123456'), 
-        ]);
-
-        return 'Admin criado com sucesso!';
+    try {
+        if (!User::where('email', 'admin@example.com')->exists()) {
+            User::create([
+                'name' => 'Renatag',
+                'email' => 'devrenatagodoy@gmail.com',
+                'password' => Hash::make('123456'), 
+            ]);
+            return 'Admin criado com sucesso!';
+        }
+        return 'Usuário Admin já existe!';
+    } catch (\Exception $e) {
+        return 'Erro: ' . $e->getMessage();
     }
-
-    return 'Usuário Admin já existe!';
 });
