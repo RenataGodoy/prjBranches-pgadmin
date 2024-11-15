@@ -28,10 +28,6 @@ Route::post('/login', [AuthController::class, 'login']);
     // Rota para logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/favicon.ico', function() {
-    return response()->file(public_path('favicon.ico'));
-});
-
 
 // //CRIANDO O ADMIN
 Route::get('/create-admin', function () {
