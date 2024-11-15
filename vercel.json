@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "vite.config.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/**/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+      }
+    ],
+    "env": {
+      "APP_ENV": "local",
+      "APP_KEY": "base64:WquXXzHlF7atMN3NkqRBh3Kr8LoJ4JTZZ2S1L556Q0E=", 
+      "DB_CONNECTION": "pgsql", 
+      "DB_HOST": "127.0.0.1",
+      "DB_PORT": "5432",
+      "DB_DATABASE": "Branches_db",
+      "DB_USERNAME": "renata",
+      "DB_PASSWORD": "123456"
+    }
+  }
+  
