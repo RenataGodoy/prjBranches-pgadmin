@@ -1,22 +1,33 @@
+# Use a imagem PHP 8.1 FPM com suporte a PostgreSQL
 FROM php:8.1-fpm
 
-# Instalar dependências necessárias
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev zip git unzip libpq-dev
+# Instalar dependências necessárias para o Laravel
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    zip \
+    git \
+    unzip \
+    libpq-dev
 
-# Instalar Composer
+# Instalar o Composer (gerenciador de dependências do PHP)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Definir o diretório de trabalho
+# Definir o diretório de trabalho dentro do container
 WORKDIR /var/www
 
-# Copiar os arquivos do projeto
+# Copiar os arquivos do projeto para o container
 COPY . .
 
-# Instalar dependências do Laravel
+# Instalar as dependências do Laravel
 RUN composer install
 
-# Expôr a porta do PHP
+# Configurar permissões para o Laravel
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+# Expor a porta 9000 para rodar o PHP-FPM
 EXPOSE 9000
 
-# Iniciar o PHP-FPM
+# Rodar o PHP-FPM no contêiner
 CMD ["php-fpm"]
