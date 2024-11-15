@@ -1,5 +1,5 @@
-# Use a imagem PHP 8.1 FPM com suporte a PostgreSQL
-FROM php:8.1-fpm
+# Use a imagem PHP 8.2 FPM com suporte a PostgreSQL
+FROM php:8.2-fpm
 
 # Instalar dependências necessárias para o Laravel
 RUN apt-get update && apt-get install -y \
