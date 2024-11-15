@@ -2,24 +2,20 @@
     "version": 2,
     "builds": [
       {
-        "src": "public/**/*",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "server.php",
+        "src": "public/index.php",
         "use": "@vercel/php"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/server.php"
+        "dest": "public/index.php"
       }
     ],
     "env": {
-      "APP_ENV": "local",
-      "APP_KEY": "base64:WquXXzHlF7atMN3NkqRBh3Kr8LoJ4JTZZ2S1L556Q0E=", 
-      "DB_CONNECTION": "pgsql", 
+      "APP_ENV": "production",
+      "APP_KEY": "base64:WquVXzH1F7atMN3NkqRBh3Kr8...",
+      "DB_CONNECTION": "pgsql",
       "DB_HOST": "127.0.0.1",
       "DB_PORT": "5432",
       "DB_DATABASE": "Branches_db",
