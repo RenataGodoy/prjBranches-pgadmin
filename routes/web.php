@@ -28,20 +28,24 @@ Route::post('/login', [AuthController::class, 'login']);
     // Rota para logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::get('/favicon.ico', function() {
+    return response()->file(public_path('favicon.ico'));
+});
+
 
 // //CRIANDO O ADMIN
-// Route::get('/create-admin', function () {
-//     if (!User::where('email', 'admin@example.com')->exists())
+Route::get('/create-admin', function () {
+    if (!User::where('email', 'admin@example.com')->exists())
 
-//  {
-//         User::create([
-//             'name' => 'Renatag',
-//             'email' => 'devrenatagodoy@gmail.com',
-//             'password' => Hash::make('123456'), 
-//         ]);
+ {
+        User::create([
+            'name' => 'Renatag',
+            'email' => 'devrenatagodoy@gmail.com',
+            'password' => Hash::make('123456'), 
+        ]);
 
-//         return 'Admin criado com sucesso!';
-//     }
+        return 'Admin criado com sucesso!';
+    }
 
-//     return 'Usuário Admin já existe!';
-// });
+    return 'Usuário Admin já existe!';
+});
